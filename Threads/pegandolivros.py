@@ -1,5 +1,5 @@
 import requests
-API_KEY = "AIzaSyCTgEmKht5NGFZ2-QVWgSTrleA1ZydrRBo"
+API_KEY = ""
 import time
 
 queries = [
