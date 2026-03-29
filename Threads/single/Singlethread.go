@@ -57,7 +57,6 @@ func loadBooks(path string) error {
 	return scanner.Err()
 }
 
-// binarySearch encontra o índice de início usando a ordenação alfabética
 func binarySearch(query string) int {
 	lower := strings.ToLower(query)
 	return sort.Search(len(books), func(i int) bool {
@@ -74,8 +73,6 @@ func searchBooks(query string) []string {
 	lower := strings.ToLower(query)
 	var found []string
 
-	// varre a lista inteira verificando se contém a query
-	// (binary search otimiza a posição inicial, mas "contains" exige varredura completa)
 	start := binarySearch(query)
 	for i := start; i < len(books); i++ {
 		if strings.Contains(strings.ToLower(books[i]), lower) {
@@ -105,7 +102,6 @@ func processTask(t SearchTask) {
 	}
 }
 
-// runLoop roda em background: consome UMA tarefa por vez
 func runLoop() {
 	for {
 		if len(taskQueue) > 0 {
@@ -155,4 +151,4 @@ func main() {
 //   curl "http://localhost:8080/search?q=harry"
 //   curl "http://localhost:8080/search?q=machado"
 //   curl "http://localhost:8080/search?q=tolkien"
-//   curl "http://localhost:8080/search?q="        ← lista todos
+//   curl "http://localhost:8080/search?q="        
